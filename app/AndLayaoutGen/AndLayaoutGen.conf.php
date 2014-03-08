@@ -2,5 +2,5 @@
 base = AndLayaoutGen/
 
 [route]
-page = page
+page = pageTest
 page/test = PageTest.test

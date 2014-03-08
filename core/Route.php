@@ -4,8 +4,8 @@ class Route{
 	
 	public static $UrlParse = NULL;
     public static $params = NULL;
-    private $classdir = NULL;
-    private $classfile = NULL;
+    private $classdir = 'controller/';
+    private $classfile = 'Index.php';
     private $class = 'ControllerIndex';
     private $method = 'index';
 	
