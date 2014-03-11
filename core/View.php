@@ -1,14 +1,21 @@
 <?php
 
 class View{
-	private $templateDir = "templates";
-	private $templateContent = "index";
+	protected $templateDir = "templates";
+	protected $templateContent = "index";
+    protected $appDir = NULL;
 	
-    public function __construct($viewDir = NULL){
+    public function __construct($viewDir = NULL,$appDir = NULL){
         if(isset($viewDir)){
             $this->templateDir = $viewDir;
         }
-        set_include_path($this->templateDir);
+        if(isset($appDir)){
+            $this->appDir = $appDir;
+        }
+    }
+    
+    public function setDefaultTemplate($templateName){
+        $this->templateContent = $templateName;
     }
     
 	public function render($templateName = NULL){
@@ -16,7 +23,7 @@ class View{
 		if(isset($templateName)){
 			$this->templateContent = $templateName;
 		}
-		include $this->templateContent.".phtml";
+		include $this->templateDir.'/'.$this->templateContent.".phtml";
 	}
 
 }

@@ -12,8 +12,7 @@ class App{
 	private $controler = NULL;
 	
 	
-	public function __construct($appName)
-	{
+	public function __construct($appName) {
 	    $this->AppName = $appName;
 	    $appdir = realpath(dirname(__FILE__).'/../app').'/'.$this->AppName;
         $this->AppPath = explode(PATH_SEPARATOR, get_include_path());
@@ -25,12 +24,9 @@ class App{
 	    }
 		$this->setConf($appName);
 		$this->AppPath[] = realpath(dirname(__FILE__));
-        
-        
 	}
 	
-	protected function setConf($confName)
-	{
+	protected function setConf($confName) {
 		if(isset($confName) && is_string($confName)){
 			$confFile = $confName.'.conf.php';
 		}
@@ -39,21 +35,19 @@ class App{
 		}
 	}
 	
-	protected function loadConf($config)
-	{
+	protected function loadConf($config) {
 		$this->Config = $config;
 		if(isset($this->Config['base'])){
 			$this->baseUrl = $this->Config['base'];
 		}
 	}
 	
-	protected function setToIncludePath($path)
-	{
+	protected function setToIncludePath($path) {
 		$this->AppPath[] = $path;
 	}
-	
-	public function run()
-	{
+	 
+	public function run() {
+	    
 		// cargar el applicacion path
 		$include_path = implode(PATH_SEPARATOR, $this->AppPath);
 		set_include_path($include_path);
@@ -68,20 +62,14 @@ class App{
 		$controllerMethod = $route->getMethod();
 		$includeController = $route->getInclude();
         
-        print_r($includeController);
-        print_r($controllerName);
-        print_r($controllerMethod);
-        
         include_once $includeController;
         $this->controler = new $controllerName();
-        
         $this->controler->setViewsDir(realpath(dirname(__FILE__).'/../app').'/'.$this->AppName.'/templates');
+        $this->controler->setAppDir('/app/'.$this->AppName);
 		$view = $this->controler->$controllerMethod();
-		
-        print_r($view);
         
         if(isset($view)){
-            //$view->render();
+            $view->render();
         }
 	}
 }

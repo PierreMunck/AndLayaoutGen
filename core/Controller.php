@@ -2,8 +2,10 @@
 include_once "View.php";
 
 class Controller{
+    protected $appDir = NULL;
     protected $viewDir = NULL;
 	protected $view = NULL;
+    
 	
 	public function __construct(){
 	    
@@ -11,6 +13,10 @@ class Controller{
 	
     public function setViewsDir($viewDir){
         $this->viewDir = $viewDir;
+    }
+    
+    public function setAppDir($appDir){
+        $this->appDir = $appDir;
     }
     
 	public function index(){
