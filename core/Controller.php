@@ -5,10 +5,13 @@ class Controller{
     protected $appDir = NULL;
     protected $viewDir = NULL;
 	protected $view = NULL;
+    protected $params = NULL;
+    protected $route = NULL;
     
 	
-	public function __construct(){
-	    
+	public function __construct($route = NULL){
+	    $this->route = $route;
+        $this->params = ROUTE::$params;
 	}
 	
     public function setViewsDir($viewDir){

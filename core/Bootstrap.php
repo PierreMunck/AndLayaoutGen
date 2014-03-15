@@ -63,7 +63,7 @@ class App{
 		$includeController = $route->getInclude();
         
         include_once $includeController;
-        $this->controler = new $controllerName();
+        $this->controler = new $controllerName($route);
         $this->controler->setViewsDir(realpath(dirname(__FILE__).'/../app').'/'.$this->AppName.'/templates');
         $this->controler->setAppDir('/app/'.$this->AppName);
 		$view = $this->controler->$controllerMethod();

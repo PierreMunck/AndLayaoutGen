@@ -6,8 +6,8 @@ include_once "View/Index.php";
 class ControllerIndex extends Controller{
 	protected $View = NULL;
 	
-	public function __construct() {
-		parent::__construct();
+	public function __construct($route) {
+		parent::__construct($route);
 	}
 
     public function index() {
