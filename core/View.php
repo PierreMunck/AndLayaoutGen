@@ -2,7 +2,7 @@
 
 class View{
 	protected $templateDir = "templates";
-	protected $templateContent = "index";
+	protected $templateContent = "index.phtml";
     protected $appDir = NULL;
 	
     public function __construct($viewDir = NULL,$appDir = NULL){
@@ -14,7 +14,15 @@ class View{
         }
     }
     
-    public function setDefaultTemplate($templateName){
+    public function setTemplateDir($templateDir){
+        $this->templateDir = $templateDir;
+    }
+    
+    public function setTemplate($templateName){
+        $ext = pathinfo($templateName, PATHINFO_EXTENSION);
+        if(!isset($ext) || $ext == ''){
+            $templateName .= ".phtml";
+        }
         $this->templateContent = $templateName;
     }
     
@@ -23,7 +31,11 @@ class View{
 		if(isset($templateName)){
 			$this->templateContent = $templateName;
 		}
-		include $this->templateDir.'/'.$this->templateContent.".phtml";
+        ob_start();
+        include $this->templateDir.'/'.$this->templateContent;
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
 	}
 
 }

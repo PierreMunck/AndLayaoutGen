@@ -26,36 +26,38 @@ class ViewHtmlheader extends View{
     }
     
     public function content(){
+        $content = '';
         if(is_array($this->scriptList)){
             foreach ($this->scriptList as  $script) {
                 $view = new View('templates/Html');
-                $view->setDefaultTemplate('script');
+                $view->setTemplate('script');
                 $view->url = $script;
-                $view->render();
+                $content .= $view->render();
             }
         }
         if(is_array($this->cssList)){
             foreach ($this->cssList as  $css) {
                 $view = new View('templates/Html');
-                $view->setDefaultTemplate('css');
+                $view->setTemplate('css');
                 $view->url = $css;
-                $view->render();
+                $content .= $view->render();
             }
         }
         if(is_array($this->metaList)){
             foreach ($metaList as  $meta) {
                 $view = new View('templates/Html');
-                $view->setDefaultTemplate('meta');
-                $view->render();
+                $view->setTemplate('meta');
+                $content .= $view->render();
             }
         }
         if(is_array($this->linkList)){
             foreach ($linkList as  $link) {
                 $view = new View('templates/Html');
-                $view->setDefaultTemplate('link');
-                $view->render();
+                $view->setTemplate('link');
+                $content .= $view->render();
             }
         }
+        return $content;
     }
 }
 ?>

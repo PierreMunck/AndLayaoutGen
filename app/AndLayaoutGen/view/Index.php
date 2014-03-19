@@ -1,17 +1,18 @@
 <?php
 include_once "View/Html.php";
+include_once "View/AndXml.php";
 
 class ViewIndex extends View{
     
-    protected $templateContent = "index";
-    
-    
-    
+    protected $templateContent = "index.phtml";
     
     public function content(){
-        $content = new View();
+        $content = new ViewAndXml();
+        $content->setTemplateDir('temporal/UIAlertDialog/');
+        $content->setTemplate('main.xml');
         
-        return 'lala';
+        $content = $content->render();
+        return $content;
     }
 }
 ?>

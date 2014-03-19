@@ -69,7 +69,7 @@ class App{
 		$view = $this->controler->$controllerMethod();
         
         if(isset($view)){
-            $view->render();
+            print $view->render();
         }
 	}
 }

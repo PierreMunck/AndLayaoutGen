@@ -11,11 +11,11 @@ class ViewHtml extends View{
     public function __construct($viewDir = NULL, $appDir = NULL){
         parent::__construct($viewDir, $appDir);
         $this->head = new ViewHtmlheader($viewDir, $appDir);
-        $this->head->setDefaultTemplate('header');
+        $this->head->setTemplate('header');
         $this->body = new View($viewDir, $appDir);
-        $this->body->setDefaultTemplate('index');
+        $this->body->setTemplate('index');
         $this->footer = new View($viewDir, $appDir);
-        $this->footer->setDefaultTemplate('footer');
+        $this->footer->setTemplate('footer');
     }
     
     public function addcss($url){
@@ -27,9 +27,11 @@ class ViewHtml extends View{
     }
     
     public function render(){
-        $this->head->render();
-        $this->body->render();
-        $this->footer->render();
+        $content = ''; 
+        $content .= $this->head->render();
+        $content .= $this->body->render();
+        $content .= $this->footer->render();
+        return $content;
     }
     
     public function setBody($view){

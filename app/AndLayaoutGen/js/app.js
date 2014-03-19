@@ -20,10 +20,10 @@ $(document).ready(function(){
                 $('#navegador').css("margin","0 -25% 0 0");
                 toolsOpen = true;
             }else{
-                $('#tools').css("margin","0 0 0 -25%");
+                $('#tools').css("margin","0 0 0 -24%");
+                $('#options').css("margin","0 -24% 0 0");
                 $('#tools').children('.tools-opener').children('.arrow-left').attr('class','arrow-right');
                 $('#tools').children('.tools-opener').css("margin",toolmidleheight +"px -5% 0 0 ");
-                $('#options').css("margin","0 -25% 0 0");
                 $('#navegador').css("margin","0 0 0 0");
                 toolsOpen = false;
             }
@@ -40,8 +40,8 @@ $(document).ready(function(){
                 $('#navegador').css("margin","0 0 0 0");
                 optionsOpen = true;
             }else{
-                $('#tools').css("margin","0 0 0 -25%");
-                $('#options').css("margin","0 -25% 0 0");
+                $('#tools').css("margin","0 0 0 -24%");
+                $('#options').css("margin","0 -24% 0 0");
                 $('#options').children('.options-opener').children('.arrow-right').attr('class','arrow-left');
                 $('#options').children('.options-opener').css("margin",optionmidleheight +"px 0 0 -5% ");
                 $('#navegador').css("margin","0 0 0 0");
