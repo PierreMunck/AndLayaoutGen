@@ -49,7 +49,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .navegador{
     width: 100%;
     background-color: #eeeeee;
-    margin: 0;
     padding: 8% 0;
 }
 
@@ -63,6 +62,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 .tools, .options{
     width: 25%;
+    height: 100%;
     background-color: #cccccc;
 }
 
@@ -91,17 +91,20 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 .tools .tools-opener{
     float:right;
-    margin: 0 -5% 0 0;
+    margin: -15% -5% 0 0;
+    height: 30%;
 }
 
 .options .options-opener{
     float:left;
-    margin: 0 0 0 -5%;
+    margin: -15% 0 0 -5%;
+    height: 30%;
 }
 
 .tools-opener .arrow-right{
     border-left-color: #cccccc;
     float: right;
+    height: 89%;
 }
 
 .tools-opener .arrow-left{
@@ -117,5 +120,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 .options-opener .arrow-left{
     border-right-color: #cccccc;
+    height: 90%;
 }
 
