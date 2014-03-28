@@ -1,6 +1,5 @@
 ;<?php die(); ?>
-base = AndLayaoutGen/
 
 [route]
-page = pageTest
-page/test = PageTest.test
+ajax = Ajax
+ajax/objectmap = AjaxObjectMap

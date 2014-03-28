@@ -1,6 +1,6 @@
 <?php
 include_once "View.php";
-include_once "View/Html/Header.php";
+include_once "view/Html/Header.php";
 
 class ViewHtml extends View{
     
@@ -27,6 +27,7 @@ class ViewHtml extends View{
     }
     
     public function render(){
+        header('Content-type: text/html; charset=utf-8');
         $content = ''; 
         $content .= $this->head->render();
         $content .= $this->body->render();

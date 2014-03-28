@@ -1,19 +1,13 @@
+<script>
+    var Layaout = "<?php print $this->getFileMap() ?>";
+</script>
+
 <div class="app-content">
-    
     <div id="tools" class="tools">
         <div class="tools-content">
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
-            <div class="tools-add-div"><a href="#">add div</a></div>
+            <div class="tools-add-button divdragadd" data-type="Button">button</div>
+            <div class="tools-add-textbox divdragadd" data-type="TextBox">textbox</div>
+            <div class="tools-add-div divdragadd" data-type="Text">text</div>
         </div>
         <div id="tools-opener" class="tools-opener">
             <div class="arrow-right"></div>
@@ -32,10 +26,10 @@
         </div>
     </div>
     <div id="navegador" class="navegador">
-        <div id="content-xml">
+        <div id="content-xml" class="divdrop">
             <?php print $this->content() ?>
-            <a id="button-ajax" class="" href="#">text</a>
+            <div class="divdragmove" data-id="@+id/Text1">test</div>
         </div>
     </div>
-    
+    <div id="message-box"></div>
 </div>

@@ -15,11 +15,19 @@ class ViewHtmlheader extends View{
     }
     
     public function addScript($url){
-        $this->scriptList[] = "/".trim($this->appDir,"/")."/".$url;
+        if(nibsa_file_exists(trim($this->appDir,"/")."/".$url)){
+            $this->scriptList[] = "/".trim($this->appDir,"/")."/".$url;
+        }elseif(nibsa_file_exists("core/js/".$url)){
+            $this->scriptList[] = "/core/js/".$url;
+        }
     }
     
     public function addCss($url){
-        $this->cssList[] = "/".trim($this->appDir,"/")."/".$url;
+        if(nibsa_file_exists(trim($this->appDir,"/")."/".$url)){
+            $this->cssList[] = "/".trim($this->appDir,"/")."/".$url;
+        }elseif(nibsa_file_exists("core/css/".$url)){
+            $this->cssList[] = "/core/css/".$url;
+        }
     }
     public function addMeta(){
         

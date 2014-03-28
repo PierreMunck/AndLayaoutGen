@@ -57,7 +57,6 @@ class App{
 		$route = new Route($this->baseUrl);
         $route->match($this->Config['route']);
         
-        
 		$controllerName = $route->getClass();
 		$controllerMethod = $route->getMethod();
 		$includeController = $route->getInclude();
@@ -72,5 +71,37 @@ class App{
             print $view->render();
         }
 	}
+    
+    public function runAjax($request) {
+        
+        // cargar el applicacion path
+        $include_path = implode(PATH_SEPARATOR, $this->AppPath);
+        set_include_path($include_path);
+        
+        if(!isset($request['type'])){
+            die();
+        }
+        if(!isset($request['action'])){
+            die();
+        }
+        // recuperar el controller
+        include_once "Route.php";
+        $route = new Route($request['type']."/".$request['action']);
+        $route->match($this->Config['route']);
+        
+        
+        $controllerName = $route->getClass();
+        $controllerMethod = $route->getMethod();
+        $includeController = $route->getInclude();
+        include_once $includeController;
+        $this->controler = new $controllerName($route);
+        $this->controler->setViewsDir(realpath(dirname(__FILE__).'/../app').'/'.$this->AppName.'/templates');
+        $this->controler->setAppDir('/app/'.$this->AppName);
+        $view = $this->controler->$controllerMethod();
+        
+        if(isset($view)){
+            print $view->render();
+        }
+    }
 }
 ?>
